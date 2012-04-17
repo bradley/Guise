@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>  
+    <meta charset="utf8">  
+    <title><%= @title + ' | Static Title' %></title>
+    <link href="/css/reset.css" rel="stylesheet">  
+    <link href="/css/style.css" rel="stylesheet">  
+  </head>  
+  <body>  
+    <header id="masthead" role="banner">
+      <div class="wrap"> 
+        <hgroup>  
+          <h1><a href="/">Site Name</a></h1>  
+          <br>
+          <% if @user %>
+            <a href='/user'>profile</a> | 
+            <a href='/account'>settings</a> | 
+            <a href='/logout'>logout</a>
+          <% else %>
+            <a href='/login'>login</a> |
+            <a href='/join'>join</a>
+          <% end %>
+          <br>
+          <hr>
+        </hgroup> 
+      </div>
+      <!-- /.wrap-->  
+    </header>  
+
+    <section id="yield">
+      <div class="wrap">
+        <div id="main">  
+          <%= yield %>
+        </div>  
+        <!-- /main -->
+      </div>
+      <!-- /.wrap -->
+    </section>
+    <!-- /yield -->
+
+    <footer>
+      <div class="wrap">
+        <small>Small text for copyleft and stuff.</small>  
+      </div>
+      <!-- /.wrap -->
+    </footer>  
+  </body>  
+</html>  

@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+/*
+NOTE: All resets are handled in a separate CSS file.
+*/
+
+/*------------------------------------*\
+	CONTENTS
+\*------------------------------------*/
+/*
+INITIAL LESS VARS
+SHARED
+CLEARFIX
+MAIN
+NAV
+MEDIA
+ISLAND
+TYPE
+IMAGES
+TABLES
+MISC
+*/
+
+
+
+
+/*------------------------------------*\
+	$INITIAL LESS VARS
+\*------------------------------------*/
+@dark-green: #18C353;
+@light-green: #07DC50;
+@standard-dark: #4F515D; 
+
+@wrap-width: 900px;
+@wrap-li-width: 278px;
+
+.css_transition {
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.gradient() {
+    background: -moz-linear-gradient(top, #07DC50, #18C353);
+    background: -webkit-gradient(linear, left top, left bottom, from(#07DC50), to(#18C353));
+    background: -o-linear-gradient(top, #07DC50, #18C353);
+    background: linea-gradient(top, #07DC50, #18C353);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#07DC50', endColorstr='#18C353');
+}
+
+.linear-stripes {
+	background-color:#256;
+	background-image: -webkit-repeating-linear-gradient(-45deg, rgba(255,255,255,.3), rgba(255,255,255,.3) 40px, transparent 40px, transparent 80px);
+	background-image: -moz-repeating-linear-gradient(-45deg, rgba(255,255,255,.3), rgba(255,255,255,.3) 40px, transparent 40px, transparent 80px);
+	background-image: -o-repeating-linear-gradient(-45deg, rgba(255,255,255,.3), rgba(255,255,255,.3) 40px, transparent 40px, transparent 80px);
+	background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,.3), rgba(255,255,255,.3) 40px, transparent 40px, transparent 80px);
+}
+
+.circular-stripes {
+	background-color: #0ae;
+	background: -webkit-repeating-radial-gradient(black, black 5px, white 5px, white 10px);
+	background: -moz-repeating-radial-gradient(black, black 5px, white 5px, white 10px);
+	background: -o-repeating-radial-gradient(black, black 5px, white 5px, white 10px);
+	background: repeating-radial-gradient(black, black 5px, white 5px, white 10px);	
+}
+
+
+
+
+/*------------------------------------*\
+	$SHARED
+\*------------------------------------*/
+
+body {
+	background: #F3F3F3;
+	font: 13px/20px 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    color: @standard-dark;
+	margin: 0 auto;
+	position: relative;
+}
+
+h1 { 
+	font-size:32px;
+	letter-spacing: -1px;
+}
+h2{ font-size:26px;}
+h3{ font-size:18px;}
+h4{ font-size:16px;}
+h5{ font-size:14px;}
+h6{ font-size:12px;}
+
+small { 
+	font-size:10px;
+}
+
+b, strong{ 
+	font-weight:bold;
+}
+
+a { 
+	text-decoration: none; 
+	:hover{
+		text-decoration: underline; 
+		cursor: pointer;
+	}
+}
+
+p {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+header {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: left;
+}
+
+.left { float:left; }
+.right { float:right; }
+.alignleft { float: left; margin-right: 15px; }
+.alignright { float: right; margin-left: 15px; }
+
+.wrap {
+	position: relative;
+	width: @wrap-width;
+	margin: 0 auto;
+}
+
+
+
+/*------------------------------------*\
+	$MEDIA
+\*------------------------------------*/
+/*
+As per: stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+*/
+.media{
+	margin: 10px;
+
+	.bd{
+		overflow:hidden; 
+		_overflow:visible; 
+		zoom:1;
+	}
+
+	.img{
+		float:left; 
+		margin-right: 
+		10px;
+
+		img{
+			display: block;
+		}
+	}
+
+	.imgExt{
+		float:right; 
+		margin-left: 10px;
+	}
+}
+

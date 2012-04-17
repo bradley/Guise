@@ -1,0 +1,26 @@
+<section id="login">
+	<form action="/login" method="post">
+		<h2>Login Form</h2>
+		<br>
+
+		<div>
+			<input name="username" type="text" placeholder="Username" id="username" />
+		</div>
+		<% if @username_error %>
+	        <span class="notice"><%= @username_error %></span>
+	    <% elsif !@user.nil? && @user.errors.on(:username) %>
+	    	<span class="notice"><%= @user.errors.on(:username) %></span>
+	    <% end %>
+
+		<div>
+			<input name="password" type="password" placeholder="Password"  id="password" />
+		</div>
+		<% if !@user.nil? && @user.errors.on(:current_password) %>
+	        <span class="notice"><%= @user.errors.on(:current_password) %></span>
+	    <% end %>
+
+		<div>
+			<input type="submit" value="Login" />
+		</div>
+	</form><!-- form -->
+</section><!-- login -->

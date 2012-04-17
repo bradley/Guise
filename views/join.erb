@@ -1,0 +1,39 @@
+<section id="join">
+	<form action="/join" method="post">
+		<h2>Join Form</h2>
+		<br>
+
+		<div>
+			<input name="username" type="text" placeholder="Username"  id="username" />
+		</div>
+		<% if !@new_user.nil? && @new_user.errors.on(:username) %>
+	        <span class="notice"><%= @new_user.errors.on(:username) %></span>
+	    <% end %>
+
+		<div>
+			<input name="email" type="email" placeholder="Email" id="email" />
+		</div>
+		<% if !@new_user.nil? && @new_user.errors.on(:email) %>
+	        <span class="notice"><%= @new_user.errors.on(:email) %></span>
+	    <% end %>
+
+		<div>
+			<input name="password" type="password" placeholder="Password" id="password" />
+		</div>
+		<% if !@new_user.nil? && @new_user.errors.on(:new_password) %>
+	        <span class="notice"><%= @new_user.errors.on(:new_password) %></span>
+	    <% end %>
+
+	    <div>
+			<input name="password_confirmation" type="password" placeholder="Confirm Password" id="password_confirmation" />
+		</div>
+		<% if !@new_user.nil? && @new_user.errors.on(:password_confirmation) %>
+	        <span class="notice"><%= @new_user.errors.on(:password_confirmation) %></span>
+	    <% end %>
+	    
+		<div>
+			<input type="submit" value="Join!" />
+		</div>
+	</form><!-- form -->
+</section><!-- join -->
+	

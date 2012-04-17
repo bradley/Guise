@@ -1,0 +1,139 @@
+@charset "UTF-8";
+/*
+NOTE: All resets are handled in a separate CSS file.
+*/
+/*------------------------------------*\
+	CONTENTS
+\*------------------------------------*/
+/*
+INITIAL LESS VARS
+SHARED
+CLEARFIX
+MAIN
+NAV
+MEDIA
+ISLAND
+TYPE
+IMAGES
+TABLES
+MISC
+*/
+/*------------------------------------*\
+	$INITIAL LESS VARS
+\*------------------------------------*/
+.css_transition {
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.linear-stripes {
+  background-color: #256;
+  background-image: -webkit-repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3) 40px, transparent 40px, transparent 80px);
+  background-image: -moz-repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3) 40px, transparent 40px, transparent 80px);
+  background-image: -o-repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3) 40px, transparent 40px, transparent 80px);
+  background-image: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3) 40px, transparent 40px, transparent 80px);
+}
+.circular-stripes {
+  background-color: #0ae;
+  background: -webkit-repeating-radial-gradient(#000000, #000000 5px, #ffffff 5px, #ffffff 10px);
+  background: -moz-repeating-radial-gradient(#000000, #000000 5px, #ffffff 5px, #ffffff 10px);
+  background: -o-repeating-radial-gradient(#000000, #000000 5px, #ffffff 5px, #ffffff 10px);
+  background: repeating-radial-gradient(#000000, #000000 5px, #ffffff 5px, #ffffff 10px);
+}
+/*------------------------------------*\
+	$SHARED
+\*------------------------------------*/
+body {
+  background: #F3F3F3;
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #4f515d;
+  margin: 0 auto;
+  position: relative;
+}
+h1 {
+  font-size: 32px;
+  letter-spacing: -1px;
+}
+h2 {
+  font-size: 26px;
+}
+h3 {
+  font-size: 18px;
+}
+h4 {
+  font-size: 16px;
+}
+h5 {
+  font-size: 14px;
+}
+h6 {
+  font-size: 12px;
+}
+small {
+  font-size: 10px;
+}
+b,
+strong {
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
+}
+a :hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.alignleft {
+  float: left;
+  margin-right: 15px;
+}
+.alignright {
+  float: right;
+  margin-left: 15px;
+}
+.wrap {
+  position: relative;
+  width: 900px;
+  margin: 0 auto;
+}
+/*------------------------------------*\
+	$MEDIA
+\*------------------------------------*/
+/*
+As per: stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+*/
+.media {
+  margin: 10px;
+}
+.media .bd {
+  overflow: hidden;
+  _overflow: visible;
+  zoom: 1;
+}
+.media .img {
+  float: left;
+  margin-right: 10px;
+}
+.media .img img {
+  display: block;
+}
+.media .imgExt {
+  float: right;
+  margin-left: 10px;
+}

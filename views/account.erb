@@ -1,0 +1,46 @@
+<section id="account_information">
+	<form action="/account" method="post">
+		<h1>Update Account Information</h1>
+		<br>
+		<h3>
+	    	Change your username or email.
+	    </h3>
+		<div>
+			<input name="username" type="text" placeholder="<%= @user.username %>"  id="username" />
+		</div>
+		<% if @user.errors.on(:username) %>
+	        <span class="notice"><%= @user.errors.on(:username) %></span>
+	    <% end %>
+		<div>
+			<input name="email" type="email" placeholder="<%= @user.email %>" id="email" />
+		</div>
+		<% if @user.errors.on(:email) %> 
+	        <span class="notice"><%= @user.errors.on(:email) %></span>
+	    <% end %>
+	    <br>
+	    <h3>
+	    	Change your password.
+	    </h3>
+		<div>
+			<input name="current_password" type="password" placeholder="Current Password" id="current_password" />
+		</div>
+		<% if @user.errors.on(:current_password) %>
+	        <span class="notice"><%= @user.errors.on(:current_password) %></span>
+	    <% end %>
+	    <div>
+			<input name="password" type="password" placeholder="New Password" id="new_password" />
+		</div>
+		<% if @user.errors.on(:new_password) %>
+	        <span class="notice"><%= @user.errors.on(:new_password) %></span>
+	    <% end %>
+	    <div>
+			<input name="password_confirmation" type="password" placeholder="Confirm New Password" id="password_confirmation" />
+		</div>
+		<% if @user.errors.on(:password_confirmation) %>
+	        <span class="notice"><%= @user.errors.on(:password_confirmation) %></span>
+	    <% end %>
+		<div>
+			<input type="submit" value="Save Changes" />
+		</div>
+	</form><!-- form -->
+</section><!-- join -->

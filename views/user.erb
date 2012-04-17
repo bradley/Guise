@@ -1,0 +1,6 @@
+<% if @user && @username.eql?(@user.username) %>
+  Hi <%=h @user.username %>, you're on your own page.
+<% else %>
+  You're on <%=h @username %>'s page.
+<% end %>
+  

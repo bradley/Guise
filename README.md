@@ -19,20 +19,31 @@ Let me know if you have any feedback. Im a newbie and would relish any chance to
 Ruby 1.9.2
 
 Gems:
+
 - rubygems
+
 - sinatra
+
 - rack-flash
+
 - sinatra-flash
+
 - sqlite3
+
 - dm-core
+
 - dm-validations
+
 - dm-timestamps
+
 - dm-sqlite-adapter
+
 - mail
 
 ## Usage
 
 - `shotgun config.ru`
+
 - `visit http://localhost:9393/`
 
 ## Thanks
