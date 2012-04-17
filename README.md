@@ -4,6 +4,7 @@ A basic sinatra application with the basic amenities a user might expect.
 ## Basic Functionality
 
 Users can:
+
 - Create an account.
 
 - Login/Logout.
