@@ -5,8 +5,11 @@ A basic sinatra application with the basic amenities a user might expect.
 
 Users can:
 - Create an account.
+
 - Login/Logout.
+
 - Edit the account information.
+
 - Delete the account.
 
 Basic error messages will be shown under related fields when there are validation errors. 
@@ -51,16 +54,21 @@ Gems:
 I received varying levels of inspiration and guidance from the following sources:
 
 The awesome Sinatra skeleton by Phrogz on StackOverflow
-http://stackoverflow.com/questions/5015471/using-sinatra-for-larger-projects-via-multiple-files
+
+    http://stackoverflow.com/questions/5015471/using-sinatra-for-larger-projects-via-multiple-files
 
 Andrew Burgess' "Ruby for Newbies: Working with DataMapper"
-http://net.tutsplus.com/tutorials/ruby/ruby-for-newbies-working-with-datamapper/
+
+    http://net.tutsplus.com/tutorials/ruby/ruby-for-newbies-working-with-datamapper/
 
 Dan Harper's "Singing with Sinatra" (and subsequent tutorials)
-http://net.tutsplus.com/tutorials/ruby/singing-with-sinatra/
+
+    http://net.tutsplus.com/tutorials/ruby/singing-with-sinatra/
 
 Additionally, I got some ideas from the following two github repos:
-https://github.com/daddz/sinatra-dm-login
-https://github.com/rziehl/Sinatra-User-Signup---Login
+
+    https://github.com/daddz/sinatra-dm-login
+
+    https://github.com/rziehl/Sinatra-User-Signup---Login
 
 I might have forgotten someone. Sorry if I did!
