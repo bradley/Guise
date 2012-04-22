@@ -4,7 +4,7 @@ class MyApp < Sinatra::Application
 	# =============== Login =================
 	['/login', '/login/'].each do |path|
 	  get path do
-	    if @user # User is already logged in
+	    if @user
 	  	  redirect "/user/#{@user.username}"
 	    else
 	      @title = 'User Login'
@@ -17,12 +17,12 @@ class MyApp < Sinatra::Application
 	  username = params[:username]
 	  password = params[:password]		
 
-	  if @user = User.account_exists(username)
-	  	@user.last_login = Time.now # Update user information
-	  	@user.current_password = password
-        if @user.save(:login)
-		  	session[:user_id] = @user.id # Set session
-		  	redirect "/user/#{@user.username}"
+	  if @login = User.account_exists(username)
+	  	@login.last_login = Time.now 
+	  	@login.current_password = password
+        if @login.save(:login)
+		  	session[:user_id] = @login.id # Set session
+		  	redirect "/user/#{@login.username}"
 		else
 		  @title = 'Error'
 	  	  # Any errors will be shown using dm_validations method .errors.on(:property)
@@ -31,7 +31,11 @@ class MyApp < Sinatra::Application
 		end
 	  else
 	  	@title = 'Error'
-		@username_error = 'There is no account associated with this username or email.'
+	  	if username.empty?
+	      @username_error = 'Please enter your username or email address.'
+	  	else
+		  @username_error = 'There is no account associated with this username or email.'
+		end
 		erb :login
 	  end
 	end
@@ -90,7 +94,9 @@ class MyApp < Sinatra::Application
 	      @response_message = 'The email for this account has already been confirmed.'
 	  	else
 	      @title = 'Confirm'
-	      @response_message = "Please follow the link we sent to the email you provided."
+	      user = User.first(username: 'test')
+	      #@response_message = "Please follow the link we sent to the email you provided."
+	      @response_message = user.md5_hash
 	    end
 	    erb :confirm
 	  end
@@ -107,7 +113,7 @@ class MyApp < Sinatra::Application
 		  if user.confirmed == false # User has not yet verified email.
 			user.confirmed = true   
 			user.updated_at = Time.now  
-		  	if user.save # User's data successfully updated.
+		  	if user.save
 		      @title = 'Account Confirmed'
 		      @response_message = "Thanks #{user.username}. You login to your account."
 		  	else # Unknown error.

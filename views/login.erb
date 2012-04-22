@@ -8,15 +8,15 @@
 		</div>
 		<% if @username_error %>
 	        <span class="notice"><%= @username_error %></span>
-	    <% elsif !@user.nil? && @user.errors.on(:username) %>
-	    	<span class="notice"><%= @user.errors.on(:username) %></span>
+	    <% elsif !@login.nil? && @login.errors.on(:username) %>
+	    	<span class="notice"><%= @login.errors.on(:username)[0] %></span>
 	    <% end %>
 
 		<div>
 			<input name="password" type="password" placeholder="Password"  id="password" />
 		</div>
-		<% if !@user.nil? && @user.errors.on(:current_password) %>
-	        <span class="notice"><%= @user.errors.on(:current_password) %></span>
+		<% if !@login.nil? && @login.errors.on(:current_password) %>
+	        <span class="notice"><%= @login.errors.on(:current_password)[0] %></span>
 	    <% end %>
 
 		<div>

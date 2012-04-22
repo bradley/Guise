@@ -1,3 +1,6 @@
+# This class is untested but should send a confirmation email to after a user joins your site.
+# Read the documentation here for more information:
+#   https://github.com/mikel/mail
 class EmailConfirmation
 	def initialize(email, md5_hash)
 	  @email = email
@@ -16,6 +19,6 @@ class EmailConfirmation
 	end
 
 	def deliver
-	  #@mail.deliver!
+	  #@mail.deliver! #Un-comment this line once you get your mail gem configured.
 	end
 end

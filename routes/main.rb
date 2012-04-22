@@ -23,7 +23,7 @@ class MyApp < Sinatra::Application
 
 	['/user/:username', '/user/:username/', '/user', '/user/'].each do |path|
 	  get path do
-	    @username = params[:username]
+	  	@username = params[:username]
 
 	  	if @username.nil?
 	  	  @user ? (redirect "/user/#{@user.username}") : (redirect '/login') 
