@@ -14,11 +14,11 @@ class User
 	include DataMapper::Resource
 
 	property :id                , Serial   , required: true, unique: true
-    property :username          , String   , required: true, unique: true, length: 1..20
-    property :email             , String   , required: true, format: :email_address, unique: true 
-    property :salt              , String   , length: 32
-    property :hashed_password   , String   , required: true, length: 64
-    property :created_at        , DateTime
+	property :username          , String   , required: true, unique: true, length: 1..20
+	property :email             , String   , required: true, format: :email_address, unique: true 
+	property :salt              , String   , length: 32
+	property :hashed_password   , String   , required: true, length: 64
+	property :created_at        , DateTime
 	property :updated_at        , DateTime
 	property :last_login        , DateTime
 	property :confirmed         , Boolean  , required: true, default: false
@@ -75,15 +75,15 @@ class User
 	  end
 	end
 
-    def self.account_exists(login)
-      if user = User.first(username: login)
-      	return user
-      elsif user = User.first(email: login)
-      	return user
-      else
-      	return nil
-      end
-    end
+	def self.account_exists(login)
+	  if user = User.first(username: login)
+	  	return user
+	  elsif user = User.first(email: login)
+	  	return user
+	  else
+	  	return nil
+	  end
+	end
 end
 
 configure :development do
