@@ -1,6 +1,8 @@
 # sinatra-with-users 
 A basic sinatra application with the basic amenities a user might expect.
 
+Now with AJAX!
+
 ## Basic Functionality
 
 Users can:
