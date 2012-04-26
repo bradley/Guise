@@ -91,6 +91,8 @@ class MyApp < Sinatra::Application
 	      @title = 'Confirm'
 	      # Note: You will need to read the documentation here to get the email to send:
 	      #   https://github.com/mikel/mail
+	      # Until then, you can manually find the md5_hash key for the given user
+	      # and then navigate to /confirm/user_email/user_md5_hash
 	      @response_message = "Please follow the link we sent to the email you provided."
 	    end
 	    erb :confirm
