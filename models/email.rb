@@ -7,15 +7,17 @@ class EmailConfirmation
 
 	def setup_email
 	  @mail = Mail.new do
-		from 'bradley.j.griffith@gmail.com'
+		from 'some.email@gmail.com'
 		to @email
-		subject 'test email'
-		body "this is the body. click here: #{@return_address}"
+		subject 'Confirmation Email'
+		body "Click here: #{@return_address}"
 	  end
 	  @mail = @mail.to_s
 	end
 
 	def deliver
+	  # Read documentation here to get this working:
+	  #   https://github.com/mikel/mail
 	  #@mail.deliver!
 	end
 end

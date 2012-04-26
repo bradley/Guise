@@ -89,9 +89,9 @@ class MyApp < Sinatra::Application
 	      @response_message = 'The email for this account has already been confirmed.'
 	  	else
 	      @title = 'Confirm'
-	      user = User.first(username: 'test')
-	      #@response_message = "Please follow the link we sent to the email you provided."
-	      @response_message = user.md5_hash
+	      # Note: You will need to read the documentation here to get the email to send:
+	      #   https://github.com/mikel/mail
+	      @response_message = "Please follow the link we sent to the email you provided."
 	    end
 	    erb :confirm
 	  end
@@ -100,9 +100,6 @@ class MyApp < Sinatra::Application
 	get '/confirm/:email/:md5_hash' do
 	  email = params[:email]
 	  md5_hash = params[:md5_hash]
-	  # The 'first' method, in DataMapper, returns the first row to contain the give key => value pair.
-	  # The 'all' method returns a hash of all the rows tha match the query. There is also a 'last' method... guess what that means!
-	  # These methods are similar to the mysql query 'SELECT * FROM user_table WHERE username = 'bradleygriffith''
 	  user = User.first(email: email)
 
 	  if user # Email matches a user in the User table.
