@@ -4,7 +4,7 @@ class MyApp < Sinatra::Application
 	# =============== Login =================
 	['/login', '/login/'].each do |path|
 	  get path do
-	    if @user
+	    if @user # User is already logged in
 	  	  redirect "/user/#{@user.username}"
 	    else
 	      @title = 'User Login'
@@ -13,12 +13,13 @@ class MyApp < Sinatra::Application
 	  end
 	end
 
+	# TODO: This should probably be handled with the ValidProperties class like other post routes do in this file.
 	post '/login' do
 	  username = params[:username]
 	  password = params[:password]		
 
 	  if @login = User.account_exists(username)
-	  	@login.last_login = Time.now 
+	  	@login.last_login = Time.now # Update user information
 	  	@login.current_password = password
         if @login.save(:login)
 		  	session[:user_id] = @login.id # Set session
@@ -54,33 +55,27 @@ class MyApp < Sinatra::Application
 	end
 
 	post '/join' do
-	  username = params[:username]
-	  email = params[:email]
-	  new_password = params[:password]
-	  password_confirmation = params[:password_confirmation]
+	  input_data = params
+	  context = :create
 
+	  @new_user = User.new
 
-	  salt = generate_salt
-	  hashed_password = hash_password(new_password, salt)
-
-	  @new_user = User.new(
-	    username: username, 
-	    email: email, 
-	    new_password: new_password,
-		password_confirmation: password_confirmation,
-	    salt: salt,
-	    hashed_password: hashed_password
-	  )
+	  unless input_data[:new_password].empty?
+		input_data[:salt] = generate_salt
+		input_data[:hashed_password] = hash_password(input_data[:new_password], salt)
+	  end
 	  
-	  if @new_user.save(:create)
+	  validate_user = ValidateProperties.new(ValidateWithCreate.new,context,input_data,@new_user)
+	  validate_user.process_validation
+
+	  if validate_user.valid_with_context? && @new_user.save(context)
 		confirm = EmailConfirmation.new(@new_user.email, @new_user.md5_hash)
 		confirm.setup_email
 		confirm.deliver
 		redirect '/confirm'	
 	  else
 		@title = 'Error'
-	  	# Any errors will be shown using dm_validations method .errors.on(:property)
-	  	#   EX: if @user.errors.on(:username) ...		
+		@error_messages = validate_user.return_error_messages	
 		erb :join
 	  end
 	end
@@ -105,7 +100,9 @@ class MyApp < Sinatra::Application
 	get '/confirm/:email/:md5_hash' do
 	  email = params[:email]
 	  md5_hash = params[:md5_hash]
-
+	  # The 'first' method, in DataMapper, returns the first row to contain the give key => value pair.
+	  # The 'all' method returns a hash of all the rows tha match the query. There is also a 'last' method... guess what that means!
+	  # These methods are similar to the mysql query 'SELECT * FROM user_table WHERE username = 'bradleygriffith''
 	  user = User.first(email: email)
 
 	  if user # Email matches a user in the User table.
@@ -113,7 +110,7 @@ class MyApp < Sinatra::Application
 		  if user.confirmed == false # User has not yet verified email.
 			user.confirmed = true   
 			user.updated_at = Time.now  
-		  	if user.save
+		  	if user.save # User's data successfully updated.
 		      @title = 'Account Confirmed'
 		      @response_message = "Thanks #{user.username}. You login to your account."
 		  	else # Unknown error.
@@ -157,37 +154,30 @@ class MyApp < Sinatra::Application
 	  end
 	end
 
+
 	post '/account' do
 	  if @user # User is logged in
-	    username = params[:username]
-	    email = params[:email]
-	    current_password = params[:current_password]
-	    new_password = params[:password]
-	    password_confirmation = params[:password_confirmation]
+	  	input_data = params
+	    context = :update_confirm
 
-		@user.username = username if !username.empty? && username != @user.username
-		@user.email = email if !email.empty? && email != @user.email
+	    validate_user = ValidateProperties.new(ValidateWithUpdate.new,context,input_data,@user)
+	    validate_user.process_validation
 
-		@user.current_password = current_password unless new_password.empty?
-		@user.new_password = new_password unless new_password.empty?
-		@user.password_confirmation = password_confirmation unless new_password.empty?
-
-		if @user.valid?(:update)
-		  unless new_password.empty?
+	    if validate_user.valid_with_context? 
+		  unless params[:new_password].empty?
 		  	salt = generate_salt
-			hashed_password = hash_password(new_password, salt)
+			hashed_password = hash_password(params[:new_password], salt)
 
 		  	@user.hashed_password = hashed_password
 		  	@user.salt = salt
 		  end
 		  @user.save
-		  redirect "/user/#{@user.username}"
-	  	else
-	  	  @title = 'Error'
-	  	  # Any errors will be shown using dm_validations method .errors.on(:property)
-	  	  #   EX: if @user.errors.on(:username) ...
+		  redirect "/user/#{@user.username}"	
+	    else
+		  @title = 'Error'
+		  @error_messages = validate_user.return_error_messages
 		  erb :account
-	  	end
+	    end
 	  else
 		redirect '/login'
 	  end

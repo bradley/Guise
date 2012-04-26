@@ -15,6 +15,10 @@ Users can:
 
 Basic error messages will be shown under related fields when there are validation errors. 
 
+## Extended Functionality
+
+If users have javascript enabled, error messages -- or, conversely, messages letting the user know how perfect their field inputs are -- will be displayed on the fly. This will not effect normal validation should the user submit a form with bad input data.
+
 ## Ideas
 Let me know if you have any feedback. Im a newbie and would relish any chance to improve on any topic here.
 

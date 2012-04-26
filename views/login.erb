@@ -3,22 +3,28 @@
 		<h2>Login Form</h2>
 		<br>
 
-		<div>
-			<input name="username" type="text" placeholder="Username" id="username" />
+		<div class="user-info">
+			<input name="username" type="text" placeholder="Username" id="username" class="user-info-field"/>
+			<span class="notice">
+				<% if @username_error %>
+			      <%= @username_error %>
+			    <% elsif !@login.nil? && @login.errors.on(:username) %>
+			      <%= @login.errors.on(:username)[0] %>
+			    <% end %>
+			</span>
 		</div>
-		<% if @username_error %>
-	        <span class="notice"><%= @username_error %></span>
-	    <% elsif !@login.nil? && @login.errors.on(:username) %>
-	    	<span class="notice"><%= @login.errors.on(:username)[0] %></span>
-	    <% end %>
+		<!-- /user-info -->
 
-		<div>
-			<input name="password" type="password" placeholder="Password"  id="password" />
+		<div class="user-info">
+			<input name="password" type="password" placeholder="Password" id="username" class="user-info-field"/>
+			<span class="notice">
+				<% if !@login.nil? && @login.errors.on(:current_password) %>
+			      <%= @login.errors.on(:current_password)[0] %>
+			    <% end %>
+			</span>
 		</div>
-		<% if !@login.nil? && @login.errors.on(:current_password) %>
-	        <span class="notice"><%= @login.errors.on(:current_password)[0] %></span>
-	    <% end %>
-
+		<!-- /user-info -->
+		
 		<div>
 			<input type="submit" value="Login" />
 		</div>
