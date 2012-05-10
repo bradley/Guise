@@ -1,5 +1,5 @@
-# Set up a new SQLite3 database in the current directory named recall.db
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/database.db")
+# Set up a new postgres database in the current directory named recall.db
+DataMapper::setup(:default, "postgres://#{Dir.pwd}/database.db")
 
 # HACK - This has to be above the model definition to work
 # If this isn't in a module then the User class can't use the helper method
