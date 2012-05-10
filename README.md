@@ -28,6 +28,8 @@ Let me know if you have any feedback. Im a newbie and would relish any chance to
 
 Ruby 1.9.2
 
+Note: The dependencies for this app are handled with [Bundler](http://gembundler.com/).
+
 Gems:
 
 - rubygems
@@ -44,17 +46,25 @@ Gems:
 
 - dm-validations
 
+- dm-migrations
+
+- dm-serializer
+
 - dm-timestamps
 
 - dm-sqlite-adapter
+
+- jsmin
+
+- cssmin
 
 - mail
 
 ## Usage
 
-- `shotgun config.ru`
+    foreman start
 
-- `visit http://localhost:9393/`
+visit http://localhost:5000/
 
 ## Thanks
 

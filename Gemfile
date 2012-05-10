@@ -1,0 +1,21 @@
+source :rubygems
+source "http://rubygems.org"
+source :rubyforge
+source "http://gems.rubyforge.org"
+source :gemcutter
+source "http://gemcutter.org"
+
+gem 'sinatra'
+gem 'rack-flash'
+gem 'sinatra-flash'
+gem 'sinatra-redirect-with-flash'
+gem 'sqlite3'
+gem 'dm-core'
+gem 'dm-validations'
+gem 'dm-migrations'
+gem 'dm-timestamps'
+gem 'dm-serializer'
+gem 'dm-sqlite-adapter'
+gem 'mail'
+gem 'jsmin'
+gem 'cssmin'
