@@ -6,7 +6,7 @@ require 'sinatra/flash' # Allows flash messages.
 require 'sinatra/redirect_with_flash' # Allows flash messages.
 
 
-require_relative 'minify_resources'
+#require_relative 'minify_resources'
 # NOTE: From the Ruby Docs...
 # require_relative complements the builtin method require by allowing 
 # you to load a file that is relative to the file containing the require_relative statement.
@@ -14,7 +14,7 @@ require_relative 'minify_resources'
 class MyApp < Sinatra::Application
 	enable :sessions
 	#enable :run
-
+=begin
 	configure :production do
 		set :clean_trace, true
 		set :css_files, :blob
@@ -32,6 +32,7 @@ class MyApp < Sinatra::Application
 		include Rack::Utils
 		alias_method :h, :escape_html
 	end
+=end
 
 end
 

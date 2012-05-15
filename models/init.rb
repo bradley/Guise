@@ -1,3 +1,4 @@
+=begin
 # encoding: utf-8
 
 # ====== GEMS FOR: user.rb =======
@@ -13,3 +14,4 @@ require 'mail'
 
 require_relative 'user'
 require_relative 'email'
+=end

@@ -1,3 +1,4 @@
+=begin
 # encoding: utf-8
 require_relative 'partials'
 MyApp.helpers PartialPartials
@@ -7,3 +8,4 @@ MyApp.helpers NiceBytes
 
 require_relative 'account_assisters'
 MyApp.helpers AccountAssisters
+=end
