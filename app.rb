@@ -1,3 +1,4 @@
+=begin
 # encoding: utf-8
 require 'rubygems'
 require 'backports'
@@ -14,7 +15,7 @@ require 'sinatra/redirect_with_flash' # Allows flash messages.
 class MyApp < Sinatra::Application
 	enable :sessions
 	#enable :run
-=begin
+
 	configure :production do
 		set :clean_trace, true
 		set :css_files, :blob
@@ -32,10 +33,23 @@ class MyApp < Sinatra::Application
 		include Rack::Utils
 		alias_method :h, :escape_html
 	end
-=end
+
 
 end
 
 require_relative 'helpers/init'
 require_relative 'models/init'
 require_relative 'routes/init'
+=end
+
+	['/', '/home', '/home/'].each do |path|
+	  get path do
+
+		#if @user then
+		 # redirect "/user/#{@user.username}"
+		#else
+		  #redirect '/login'
+		#end
+		'hello world'
+	  end
+	end
