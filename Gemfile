@@ -6,6 +6,7 @@ source :gemcutter
 source "http://gemcutter.org"
 
 gem 'sinatra'
+=begin
 gem 'rack'
 gem 'backports'
 gem 'extensions'
@@ -23,3 +24,4 @@ gem 'dm-postgres-adapter'
 gem 'mail'
 gem 'jsmin'
 gem 'cssmin'
+=end
