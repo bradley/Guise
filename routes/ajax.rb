@@ -4,6 +4,8 @@ class MyApp < Sinatra::Application
     input_data = params
     context = URI.decode(params[:context])
     entity_type = URI.decode(params[:entity_type])
+  
+
 
     @user = User.new unless @user
 
@@ -25,5 +27,6 @@ class MyApp < Sinatra::Application
         return validate_user.return_valid_messages[entity_type.to_sym]
       end
     end
+
   end
 end

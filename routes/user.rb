@@ -61,7 +61,8 @@ class MyApp < Sinatra::Application
 	  @new_user = User.new
 
 	  unless input_data[:new_password].empty?
-		input_data[:salt] = generate_salt
+	  	salt = generate_salt
+		input_data[:salt] = salt
 		input_data[:hashed_password] = hash_password(input_data[:new_password], salt)
 	  end
 	  
@@ -102,7 +103,7 @@ class MyApp < Sinatra::Application
 	get '/confirm/:email/:md5_hash' do
 	  email = params[:email]
 	  md5_hash = params[:md5_hash]
-	  user = User.first(email: email)
+	  user = User.first(:email => email)
 
 	  if user # Email matches a user in the User table.
 		if user.md5_hash == md5_hash # Given hash cooresponds to this user.

@@ -1,5 +1,5 @@
 # Set up a new postgres database in the current directory named recall.db
-DataMapper::setup(:default, "postgres://#{Dir.pwd}/database.db")
+DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/database.db")
 
 # HACK - This has to be above the model definition to work
 # If this isn't in a module then the User class can't use the helper method
@@ -15,16 +15,16 @@ class User
 	include DataMapper::Resource
 	include PasswordHasher
 
-	property :id                , Serial   , required: true, unique: true
-    property :username          , String   , required: true, unique: true, length: 1..20
-    property :email             , String   , required: true, format: :email_address, unique: true  
-    property :salt              , String   , length: 32
-    property :hashed_password   , String   , required: true, length: 64
+	property :id                , Serial   , :required => true, :unique => true
+    property :username          , String   , :required => true, :unique => true, :length => 1..20
+    property :email             , String   , :required => true, :format => :email_address, :unique => true  
+    property :salt              , String   , :length => 32
+    property :hashed_password   , String   , :required => true, :length => 64
     property :created_at        , DateTime
 	property :updated_at        , DateTime
 	property :last_login        , DateTime
-	property :confirmed         , Boolean  , required: true, default: false
-	property :md5_hash          , String   , unique: true, default: lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.downcase+resource.salt)}
+	property :confirmed         , Boolean  , :required => true, :default => false
+	property :md5_hash          , String   , :unique => true, :default => lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.downcase+resource.salt)}
 
 	attr_accessor :current_password , :new_password , :password_confirmation , :success_messages
 
@@ -80,9 +80,9 @@ class User
 	end
 
     def self.account_exists(login)
-      if user = User.first(username: login)
+      if user = User.first(:username => login)
       	return user
-      elsif user = User.first(email: login)
+      elsif user = User.first(:email => login)
       	return user
       else
       	return nil
@@ -184,8 +184,6 @@ class ValidateWithUpdate
   include ValidMessages
   def process_validation(validation_content)
   	validation_content.input_data.each_pair do |key, val|
-  	  break if key == 'splat'
-
   	  key = key.to_sym
 	  val = val.to_s
 
@@ -210,12 +208,20 @@ class ValidateWithCreate
   include ValidMessages
   def process_validation(validation_content)
   	validation_content.input_data.each_pair do |key, val|
-  	  break if key == 'splat'
 
   	  key = key.to_sym
 	  val = val.to_s
 
-	  validation_content.user.attributes = {key => val}
+	  case key
+	  when :username
+	    validation_content.user.attributes = {key => val}
+	  when :email
+	    validation_content.user.attributes = {key => val}
+	  when :new_password
+	    validation_content.user.attributes = {key => val}
+	  when :password_confirmation
+	    validation_content.user.attributes = {key => val}
+	  end 
 	end
   end
 end

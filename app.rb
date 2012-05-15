@@ -1,8 +1,10 @@
 # encoding: utf-8
 require 'rubygems'
+require 'backports'
 require 'sinatra'
 require 'sinatra/flash' # Allows flash messages.
 require 'sinatra/redirect_with_flash' # Allows flash messages.
+
 
 require_relative 'minify_resources'
 # NOTE: From the Ruby Docs...
