@@ -83,6 +83,7 @@ DEPENDENCIES
   extensions
   jsmin
   mail
+  pg
   postgres
   rack
   rack-flash3
