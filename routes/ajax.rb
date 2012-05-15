@@ -1,4 +1,5 @@
 # encoding: utf-8
+=begin
 class MyApp < Sinatra::Application
   post '/validate/:context/:entity_type' do
     input_data = params
@@ -30,3 +31,4 @@ class MyApp < Sinatra::Application
 
   end
 end
+=end

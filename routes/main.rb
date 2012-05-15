@@ -3,28 +3,30 @@ class MyApp < Sinatra::Application
 
 	SITE_NAME = "Site Name"
 	DEFAULT_TITLE = "Default Title"
-
+=begin
 	before do
 	  if logged_in?
 	  	@user = User.first(:id => session[:user_id])
 	  end
 	  @title = DEFAULT_TITLE
 	end
-
+=end
 	not_found do
   	  redirect '/404'
 	end
 
 	['/', '/home', '/home/'].each do |path|
 	  get path do
-		if @user then
-		  redirect "/user/#{@user.username}"
-		else
-		  redirect '/login'
-		end
+
+		#if @user then
+		 # redirect "/user/#{@user.username}"
+		#else
+		  #redirect '/login'
+		#end
+		'hello world'
 	  end
 	end
-
+=begin
 	['/user/:username', '/user/:username/', '/user', '/user/'].each do |path|
 	  get path do
 	  	@username = params[:username]
@@ -37,7 +39,7 @@ class MyApp < Sinatra::Application
         erb :user
 	  end
 	end
-
+=end
 	['/404', '/404/'].each do |path|
 	  get path do
 	  	@title = '404'

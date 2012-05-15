@@ -1,3 +1,4 @@
+=begin
 # Set up a new postgres database in the current directory named recall.db
 DataMapper::setup(:default, "postgres://#{Dir.pwd}/database.db")
 
@@ -225,3 +226,4 @@ class ValidateWithCreate
 	end
   end
 end
+=end

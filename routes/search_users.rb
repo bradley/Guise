@@ -1,3 +1,4 @@
+=begin
 # encoding: utf-8
 class MyApp < Sinatra::Application
   get '/list' do
@@ -26,3 +27,4 @@ class MyApp < Sinatra::Application
   end
 
 end
+=end

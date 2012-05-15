@@ -1,3 +1,4 @@
+=begin
 # encoding: utf-8
 class MyApp < Sinatra::Application
 
@@ -184,3 +185,4 @@ class MyApp < Sinatra::Application
 	end
 	# ========= /Account Management =========
 end
+=end
