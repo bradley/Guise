@@ -1,5 +1,6 @@
 # encoding: utf-8
 module NiceBytes
+=begin
 	K = 2.0**10
 	M = 2.0**20
 	G = 2.0**30
@@ -27,4 +28,5 @@ module NiceBytes
 		"%.#{precision}f#{suffix}" % value
 	end
 	module_function :nice_bytes
+=end
 end
