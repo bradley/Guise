@@ -5,7 +5,7 @@ class App < Sinatra::Application
     context = URI.decode(params[:context])
     entity_type = URI.decode(params[:entity_type])
   
-    return context.to_s
+    return input_data.to_s
 =begin
     @user = User.new unless @user
 
