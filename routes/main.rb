@@ -4,9 +4,9 @@ class App < Sinatra::Application
   DEFAULT_TITLE = "Default Title"
 
   before do
-    #if logged_in?
-      #@user = User.first(:id => session[:user_id])
-    #end
+    if logged_in?
+      @user = User.first(:id => session[:user_id])
+    end
     @title = DEFAULT_TITLE
   end
 

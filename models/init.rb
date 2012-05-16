@@ -10,4 +10,4 @@ require 'dm-serializer'
 require 'dm-postgres-adapter'
 
 require_relative 'user'
-#require_relative 'email'
+require_relative 'email'
