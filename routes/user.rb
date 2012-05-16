@@ -1,4 +1,3 @@
-=begin
 # encoding: utf-8
 class MyApp < Sinatra::Application
 
@@ -22,7 +21,7 @@ class MyApp < Sinatra::Application
 	  if @login = User.account_exists(username)
 	  	@login.last_login = Time.now # Update user information
 	  	@login.current_password = password
-        if @login.save(:login)
+	    if @login.save(:login)
 		  	session[:user_id] = @login.id # Set session
 		  	redirect "/user/#{@login.username}"
 		else
@@ -44,10 +43,10 @@ class MyApp < Sinatra::Application
 	# ============== /Login =================
 
 	# ============= New Account ==============
-    ['/join', '/join/'].each do |path|
+	['/join', '/join/'].each do |path|
 	  get path do
-        if @user # User is already logged in.
-      	  redirect "/user/#{@user.username}"
+	    if @user # User is already logged in.
+	  	  redirect "/user/#{@user.username}"
 	    else
 	      @title = 'Join'
 	      erb :join
@@ -137,9 +136,9 @@ class MyApp < Sinatra::Application
 	# =============== Logout =================
 	['/logout', '/logout/'].each do |path|
 	  get path do
-        session.clear
-        redirect '/'
-      end
+	    session.clear
+	    redirect '/'
+	  end
 	end
 	# ============== /Logout ================
 
@@ -185,4 +184,3 @@ class MyApp < Sinatra::Application
 	end
 	# ========= /Account Management =========
 end
-=end
