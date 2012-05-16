@@ -15,7 +15,7 @@ class User
 	include DataMapper::Resource
 	include PasswordHasher
 
-	property :id                , Serial   , :required => true, :unique => true
+	property :id                , Serial   , required: true, :unique => true
     property :username          , String   , :required => true, :unique => true, :length => 1..20
     property :email             , String   , :required => true, :format => :email_address, :unique => true  
     property :salt              , String   , :length => 32
