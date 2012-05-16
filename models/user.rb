@@ -24,7 +24,7 @@ class User
 	property :updated_at        , DateTime
 	property :last_login        , DateTime
 	property :confirmed         , Boolean  , required: true, default: false
-	property :md5_hash          , String   , unique: true, default: lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.downcase+resource.salt)}
+	property :md5_hash          , String   , unique: true, :default => lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.downcase+resource.salt)}
 
 	attr_accessor :current_password , :new_password , :password_confirmation , :success_messages
 
