@@ -1,7 +1,7 @@
 require 'sinatra'
 
 class App < Sinatra::Application
-  get '/' do
-    "Hello World!"
-  end
+  # NOTHING
 end
+
+require_relative 'routes/main'
