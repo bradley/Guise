@@ -15,15 +15,15 @@ class App < Sinatra::Application
   end
 
   ['/', '/home', '/home/'].each do |path|
-	get path do
-	  erb :home
-	end
+  	get path do
+  	  erb :home
+  	end
   end
 
   ['/404', '/404/'].each do |path|
-	get path do
-	  @title = '404'
-	  erb :unfound
-	end
+  	get path do
+  	  @title = '404'
+  	  erb :unfound
+  	end
   end
 end
