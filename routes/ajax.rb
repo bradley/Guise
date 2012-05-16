@@ -1,6 +1,5 @@
 # encoding: utf-8
-=begin
-class MyApp < Sinatra::Application
+class App < Sinatra::Application
   post '/validate/:context/:entity_type' do
     input_data = params
     context = URI.decode(params[:context])
@@ -31,4 +30,3 @@ class MyApp < Sinatra::Application
 
   end
 end
-=end

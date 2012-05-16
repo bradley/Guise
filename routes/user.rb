@@ -1,6 +1,5 @@
 # encoding: utf-8
-class MyApp < Sinatra::Application
-
+class App < Sinatra::Application
 	# =============== Login =================
 	['/login', '/login/'].each do |path|
 	  get path do
