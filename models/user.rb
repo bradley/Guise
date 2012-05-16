@@ -15,16 +15,16 @@ class User
 	include DataMapper::Resource
 	include PasswordHasher
 
-	property :id                , Serial   , required: true, :unique => true
-    property :username          , String   , :required => true, :unique => true, :length => 1..20
-    property :email             , String   , :required => true, :format => :email_address, :unique => true  
-    property :salt              , String   , :length => 32
-    property :hashed_password   , String   , :required => true, :length => 64
+	property :id                , Serial   , required: true, unique: true
+    property :username          , String   , required: true, unique: true, length: 1..20
+    property :email             , String   , required: true, format: :email_address, unique: true  
+    property :salt              , String   , length: 32
+    property :hashed_password   , String   , required: true, length: 64
     property :created_at        , DateTime
 	property :updated_at        , DateTime
 	property :last_login        , DateTime
-	property :confirmed         , Boolean  , :required => true, :default => false
-	property :md5_hash          , String   , :unique => true, :default => lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.downcase+resource.salt)}
+	property :confirmed         , Boolean  , required: true, default: false
+	property :md5_hash          , String   , unique: true, default: lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.downcase+resource.salt)}
 
 	attr_accessor :current_password , :new_password , :password_confirmation , :success_messages
 
@@ -80,9 +80,9 @@ class User
 	end
 
     def self.account_exists(login)
-      if user = User.first(:username => login)
+      if user = User.first(username: login)
       	return user
-      elsif user = User.first(:email => login)
+      elsif user = User.first(email: login)
       	return user
       else
       	return nil
