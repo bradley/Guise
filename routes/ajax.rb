@@ -5,10 +5,9 @@ class App < Sinatra::Application
     context = URI.decode(params[:context])
     entity_type = URI.decode(params[:entity_type])
   
-    return input_data.to_s
-=begin
     @user = User.new unless @user
-
+    return @user.to_s
+=begin
     if context == 'update'
       validation_type = ValidateWithUpdate.new
     elsif context == 'create'
@@ -27,6 +26,6 @@ class App < Sinatra::Application
         return validate_user.return_valid_messages[entity_type.to_sym]
       end
     end
-=end
   end
+=end
 end
