@@ -60,11 +60,6 @@ Gems:
 
 - mail
 
-## Usage
-
-    foreman start
-
-visit http://localhost:5000/
 
 ## Thanks
 

@@ -1,6 +1,6 @@
 # encoding: utf-8
 class App < Sinatra::Application
   get '/' do
-    "Hello World!"
+    erb :home
   end
 end
