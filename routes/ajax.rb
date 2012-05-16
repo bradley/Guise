@@ -5,8 +5,8 @@ class App < Sinatra::Application
     context = URI.decode(params[:context])
     entity_type = URI.decode(params[:entity_type])
   
-
-
+    return 'hi from ajax'
+=begin
     @user = User.new unless @user
 
     if context == 'update'
@@ -27,6 +27,6 @@ class App < Sinatra::Application
         return validate_user.return_valid_messages[entity_type.to_sym]
       end
     end
-
+=end
   end
 end
