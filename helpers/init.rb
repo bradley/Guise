@@ -2,3 +2,6 @@
 
 require_relative 'nicebytes'
 App.helpers NiceBytes
+
+require_relative 'account_assisters'
+MyApp.helpers AccountAssisters
