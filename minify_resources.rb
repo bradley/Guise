@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-
 module MinifyResources
 	CSS_BLOB  = 'public/blob.css'
 	CSS_DIR   = 'public/css'
