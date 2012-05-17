@@ -112,8 +112,8 @@ module ValidMessages
   def return_valid_messages(validation_content)
   	user = validation_content.user
   	input_data = validation_content.input_data
-	return_messages = Hash.new
-	success_messages = user.is_valid_messages
+	  return_messages = Hash.new
+	  success_messages = user.is_valid_messages
 
     input_data.each_pair do |key,val|
 	  key = key.to_sym
@@ -201,16 +201,6 @@ class ValidateWithUpdate
 	      validation_content.user.attributes = {key => val} if !validation_content.user.dirty_attributes.empty? || validation_content.user.new_password 
 	  end 
 	end
-  end
-end
-
-class DeleteMe
-  def initialize
-    @db_uri = URI.parse(ENV['DATABASE_URL']).to_s
-  end
-
-  def get_nonsense
-    return @db_uri
   end
 end
 
