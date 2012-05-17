@@ -1,5 +1,6 @@
 # Set up a new postgres database in the current directory named recall.db
-DataMapper::setup(:default, "postgres://#{Dir.pwd}/database.db")
+db_uri = URI.parse(ENV['DATABASE_URL'])
+DataMapper::setup(:default, db_uri)
 
 # HACK - This has to be above the model definition to work
 # If this isn't in a module then the User class can't use the helper method
@@ -16,11 +17,11 @@ class User
 	include PasswordHasher
 
 	property :id                , Serial   , required: true, unique: true
-    property :username          , String   , required: true, unique: true, length: 1..20
-    property :email             , String   , required: true, format: :email_address, unique: true  
-    property :salt              , String   , length: 32
-    property :hashed_password   , String   , required: true, length: 64
-    property :created_at        , DateTime
+  property :username          , String   , required: true, unique: true, length: 1..20
+  property :email             , String   , required: true, format: :email_address, unique: true  
+  property :salt              , String   , length: 32
+  property :hashed_password   , String   , required: true, length: 64
+  property :created_at        , DateTime
 	property :updated_at        , DateTime
 	property :last_login        , DateTime
 	property :confirmed         , Boolean  , required: true, default: false
