@@ -1,6 +1,5 @@
 # Set up a new postgres database in the current directory named recall.db
-db_uri = URI.parse(ENV['DATABASE_URL']).to_s
-DataMapper::setup(:default, db_uri)
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/database.db")
 
 # HACK - This has to be above the model definition to work
 # If this isn't in a module then the User class can't use the helper method

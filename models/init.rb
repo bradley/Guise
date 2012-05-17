@@ -2,6 +2,7 @@
 
 # ====== GEMS FOR: user.rb =======
 require 'pg'
+require 'data_mapper'
 require 'dm-core'
 require 'dm-validations'
 require 'dm-migrations'
