@@ -21,10 +21,10 @@ class App < Sinatra::Application
     validate_user.process_validation
 
     if validate_user.valid_with_context?
-      return validate_user.return_valid_messages[entity_type.to_sym]
+      return 'asd'#validate_user.return_valid_messages[entity_type.to_sym]
     else 
       if error_message = validate_user.return_error_messages[entity_type.to_sym]
-        return error_message
+        return 'as'#error_message
       else
         return 'ad'#validate_user.return_valid_messages[entity_type.to_sym]
       end
