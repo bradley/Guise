@@ -10,8 +10,7 @@ class App < Sinatra::Application
     @tester = Tester.new
     @tester.username = 'ted'
     @test.save
-    return @tester.username
-
+    return 'asd'
    #thing = DeleteMe.new
    #return thing.return_thing
 
