@@ -86,6 +86,7 @@ DEPENDENCIES
   dm-serializer
   dm-timestamps
   dm-validations
+  do_postgres
   jsmin
   pg
   sinatra
