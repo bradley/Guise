@@ -9,8 +9,11 @@ class App < Sinatra::Application
 
     @tester = Tester.new
     @tester.username = 'ted'
-    #@test.save
-    return 'asd'
+    if @test.save
+      return 'asd'
+    else
+      return 'ad'
+    end
    #thing = DeleteMe.new
    #return thing.return_thing
 
