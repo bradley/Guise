@@ -102,10 +102,10 @@ end
 
 DataMapper.finalize
 
-configure :development do
+#configure :development do
   #DataMapper.auto_migrate! # Uncomment this out to clear database.
   #DataMapper.auto_upgrade!  # Do the above and comment this out to clear database.
-end
+#end
 
 
 
