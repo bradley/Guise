@@ -6,7 +6,7 @@ class App < Sinatra::Application
     entity_type = URI.decode(params[:entity_type])
 
     @user = User.new unless @user
-    return @user.id
+    return @user[:id]
 =begin
     if context == 'update'
       validation_type = ValidateWithUpdate.new
