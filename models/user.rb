@@ -5,7 +5,7 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/database
 # If this isn't in a module then the User class can't use the helper method
 module PasswordHasher
 	def hash_password(password, salt)
-		Digest::MD5.hexdigest(password+salt)
+		Digest::MD5.hexdigest(password.to_s+salt.to_s)
 	end
 end
 
@@ -24,7 +24,7 @@ class User
 	property :updated_at        , DateTime
 	property :last_login        , DateTime
 	property :confirmed         , Boolean  , required: true, default: false
-	property :md5_hash          , String   , unique: true, default: lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.downcase+resource.salt)}
+	property :md5_hash          , String   , unique: true, default: lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.to_s.downcase+resource.salt.to_s)}
 
 	attr_accessor :current_password , :new_password , :password_confirmation , :success_messages
 
@@ -219,7 +219,7 @@ class ValidateWithCreate
   def process_validation(validation_content)
   	validation_content.input_data.each_pair do |key, val|
 
-  	  key = key.to_sym
+  	key = key.to_sym
 	  val = val.to_s
 
 	  case key
