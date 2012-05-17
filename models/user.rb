@@ -204,6 +204,16 @@ class ValidateWithUpdate
   end
 end
 
+class DeleteMe
+  def initialize
+    @db_uri = URI.parse(ENV['DATABASE_URL']).to_s
+  end
+
+  def get_nonsense
+    return @db_uri
+  end
+end
+
 # Strategy
 class ValidateWithCreate
   include ValidMessages
