@@ -1,5 +1,5 @@
 # Set up a new postgres database in the current directory named recall.db
-db_uri = URI.parse(ENV['DATABASE_URL'])
+db_uri = URI.parse(ENV['DATABASE_URL']).to_s
 DataMapper::setup(:default, db_uri)
 
 # HACK - This has to be above the model definition to work
