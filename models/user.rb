@@ -75,7 +75,7 @@ class User
 	  if (hash_password(@current_password, @salt)).eql?(@hashed_password)
 	    return true
 	  else
-		return [false, 'Wrong password!']
+		  return [false, 'Wrong password!']
 	  end
 	end
 
@@ -100,9 +100,11 @@ class User
     end
 end
 
+DataMapper.finalize
+
 configure :development do
   #DataMapper.auto_migrate! # Uncomment this out to clear database.
-  DataMapper.auto_upgrade!  # Do the above and comment this out to clear database.
+  #DataMapper.auto_upgrade!  # Do the above and comment this out to clear database.
 end
 
 
