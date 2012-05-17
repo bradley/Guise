@@ -9,7 +9,7 @@ class App < Sinatra::Application
 
     @tester = Tester.new
     @tester.username = 'ted'
-    if @test.save
+    if @tester.save
       return 'asd'
     else
       return 'ad'
