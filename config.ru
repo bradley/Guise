@@ -1,4 +1,4 @@
-set :environment, :development
+set :environment, :production
 
 root = ::File.dirname(__FILE__)
 require ::File.join( root, './app' )
