@@ -203,6 +203,16 @@ class ValidateWithUpdate
   end
 end
 
+class DeleteMe
+  def initialize 
+    @thing = ENV['DATABASE_URL']
+  end
+
+  def return_thing
+    @thing
+  end
+end
+
 # Strategy
 class ValidateWithCreate
   include ValidMessages
