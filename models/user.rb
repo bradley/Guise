@@ -1,6 +1,12 @@
 # Set up a new postgres database in the current directory named recall.db
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/database.db")
-
+configure :production do 
+  DataMapper::setup(:default, ENV['DATABASE_URL']) 
+end 
+configure :development do 
+  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/database.db") 
+  #DataMapper.auto_migrate! # Uncomment this out to clear database.
+  DataMapper.auto_upgrade!  # Do the above and comment this out to clear database.
+end
 # HACK - This has to be above the model definition to work
 # If this isn't in a module then the User class can't use the helper method
 module PasswordHasher
@@ -104,13 +110,6 @@ class User
       return success_messages
     end
 end
-
-
-configure :development do
-  #DataMapper.auto_migrate! # Uncomment this out to clear database.
-  DataMapper.auto_upgrade!  # Do the above and comment this out to clear database.
-end
-
 
 
 module ValidMessages
