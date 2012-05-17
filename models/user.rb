@@ -11,6 +11,11 @@ end
 
 include PasswordHasher
 
+class Tester
+  include DataMapper::Resource
+  property :username , String , required: true, unique: true
+end
+
 class User
 	include DataMapper::Resource
 	include PasswordHasher

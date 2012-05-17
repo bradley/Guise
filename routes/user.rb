@@ -61,8 +61,8 @@ class App < Sinatra::Application
 
 	  unless input_data[:new_password].empty?
 	  	salt = generate_salt
-		input_data[:salt] = salt
-		input_data[:hashed_password] = hash_password(input_data[:new_password], salt)
+			input_data[:salt] = salt
+			input_data[:hashed_password] = hash_password(input_data[:new_password], salt)
 	  end
 	  
 	  validate_user = ValidateProperties.new(ValidateWithCreate.new,context,input_data,@new_user)
