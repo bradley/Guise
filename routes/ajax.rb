@@ -7,10 +7,10 @@ class App < Sinatra::Application
 
     @user = User.new unless @user
 
-   thing = DeleteMe.new
-   return thing.return_thing
+   #thing = DeleteMe.new
+   #return thing.return_thing
 
-=begin
+#=begin
     if context == 'update'
       validation_type = ValidateWithUpdate.new
     elsif context == 'create'
@@ -26,9 +26,9 @@ class App < Sinatra::Application
       if error_message = validate_user.return_error_messages[entity_type.to_sym]
         return error_message
       else
-        return validate_user.return_valid_messages[entity_type.to_sym]
+        return 'ad'#validate_user.return_valid_messages[entity_type.to_sym]
       end
     end
-=end
+#=end
   end
 end
