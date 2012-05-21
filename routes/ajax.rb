@@ -7,7 +7,7 @@ class App < Sinatra::Application
 
     #@user = User.new unless @user
 
-    @tester = Tester.new
+    @tester = Tester.create
     @tester.username = 'ted'
     if @tester.save
       return 'asd'
