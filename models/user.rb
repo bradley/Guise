@@ -1,9 +1,6 @@
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/database.db") 
 
-configure :development do 
-  #DataMapper.auto_migrate! # Uncomment this out to clear database.
-  DataMapper.auto_upgrade!  # Do the above and comment this out to clear database.
-end
+
 # HACK - This has to be above the model definition to work
 # If this isn't in a module then the User class can't use the helper method
 module PasswordHasher
