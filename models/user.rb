@@ -1,9 +1,6 @@
-# Set up a new postgres database in the current directory named recall.db
-configure :production do 
-  DataMapper::setup(:default, ENV['DATABASE_URL']) 
-end 
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/database.db") 
+
 configure :development do 
-  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/database.db") 
   #DataMapper.auto_migrate! # Uncomment this out to clear database.
   DataMapper.auto_upgrade!  # Do the above and comment this out to clear database.
 end
