@@ -69,14 +69,14 @@ class App < Sinatra::Application
 	  validate_user.process_validation
 
 	  if validate_user.valid_with_context? && @new_user.save(context)
-		confirm = EmailConfirmation.new(@new_user.email, @new_user.md5_hash)
-		confirm.setup_email
-		confirm.deliver
-		redirect '/confirm'	
+			confirm = EmailConfirmation.new(@new_user.email, @new_user.md5_hash)
+			confirm.setup_email
+			confirm.deliver
+			redirect '/confirm'	
 	  else
-		@title = 'Error'
-		@error_messages = validate_user.return_error_messages	
-		erb :join
+			@title = 'Error'
+			@error_messages = validate_user.return_error_messages	
+			erb :join
 	  end
 	end
 	# ============ /New Account =============

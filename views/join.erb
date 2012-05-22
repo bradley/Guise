@@ -8,7 +8,7 @@
       <span class="notice">
         <% if @error_messages && @error_messages[:username] %>
               <%= @error_messages[:username] %>
-          <% end %>
+        <% end %>
       </span>
     </div>
     <!-- /user-info -->
@@ -19,25 +19,25 @@
       <span class="notice">
         <% if @error_messages && @error_messages[:email] %> 
               <%= @error_messages[:email] %>
-          <% end %>
-        </span>
+        <% end %>
+      </span>
     </div>
     <!-- /user-info -->
 
-      <div class="user-info">
+    <div class="user-info">
       <input name="new_password" type="password" placeholder="Password" id="new_password" class="user-info-field update-user-info-field"/>
       <span class="notice">
         <% if @error_messages && @error_messages[:new_password] %>
-              <%= @error_messages[:new_password] %>
-          <% end %>
-        </span>
+            <%= @error_messages[:new_password] %>
+        <% end %>
+      </span>
     </div>
     <!-- /user-info -->
 
       <div class="user-info">
-      <input name="password_confirmation" type="password" placeholder="Confirm Password" id="password_confirmation" class="user-info-field update-user-info-field"/>
-      <span class="notice">
-        <% if @error_messages && @error_messages[:password_confirmation] %>
+        <input name="password_confirmation" type="password" placeholder="Confirm Password" id="password_confirmation" class="user-info-field update-user-info-field"/>
+        <span class="notice">
+          <% if @error_messages && @error_messages[:password_confirmation] %>
               <%= @error_messages[:password_confirmation] %>
           <% end %>
         </span>
@@ -49,3 +49,6 @@
     </div>
   </form><!-- form -->
 </section><!-- join -->
+          <% if @error_messages%>
+              <%= @error_messages.to_s %>
+          <% end %>
