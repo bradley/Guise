@@ -1,12 +1,8 @@
-DataMapper::Logger.new($stdout, :debug)
+#DataMapper::Logger.new($stdout, :debug)
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/database.db") 
 
-configure :development do 
-  #DataMapper.auto_migrate! # Uncomment this out to clear database.
-  DataMapper.auto_upgrade!  # Do the above and comment this out to clear database.
-  enable :logging, :dump_errors, :raise_errors
-end
+
 # HACK - This has to be above the model definition to work
 # If this isn't in a module then the User class can't use the helper method
 module PasswordHasher
@@ -112,8 +108,15 @@ class User
     end
 end
 
+configure :development do 
+  #DataMapper.auto_migrate! # Uncomment this out to clear database.
+  DataMapper.auto_upgrade!  # Do the above and comment this out to clear database.
+  #enable :logging, :dump_errors, :raise_errors
+end
+
+
 DataMapper.finalize
-DataMapper.auto_migrate!
+#DataMapper.auto_migrate!
 
 module ValidMessages
   def return_valid_messages(validation_content)
