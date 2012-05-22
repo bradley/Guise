@@ -6,6 +6,7 @@ source :gemcutter
 source "http://gemcutter.org"
 
 gem 'sinatra'
+gem 'rake'
 gem 'jsmin'
 gem 'cssmin'
 gem 'pg'
