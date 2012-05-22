@@ -18,8 +18,13 @@ end
 include PasswordHasher
 
 class Tester
-  include DataMapper::Resource
-  property :username , String , required: true, unique: true
+  attr_accessor :user
+  #include DataMapper::Resource
+  #property :username , String , required: true, unique: true
+  def initialize
+    @user = ''
+  end
+
 end
 
 class User
