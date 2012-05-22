@@ -1,5 +1,20 @@
 # encoding: utf-8
 class App < Sinatra::Application
+	# =============== User =================
+	['/user/:username', '/user/:username/', '/user', '/user/'].each do |path|
+	  get path do
+	  	@username = params[:username]
+
+	  	if @username.nil?
+	  	  @user ? (redirect "/user/#{@user.username}") : (redirect '/login') 
+	  	end
+        User.first(:username => @username) ? (@title = @username) : (redirect '/404')
+        
+        erb :user
+	  end
+	end
+	# ============== /User =================
+
 	# =============== Login =================
 	['/login', '/login/'].each do |path|
 	  get path do
@@ -167,7 +182,7 @@ class App < Sinatra::Application
 	    if validate_user.valid_with_context? 
 		  unless params[:new_password].empty?
 		  	salt = generate_salt
-			hashed_password = hash_password(params[:new_password], salt)
+				hashed_password = hash_password(params[:new_password], salt)
 
 		  	@user.hashed_password = hashed_password
 		  	@user.salt = salt
