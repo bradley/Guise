@@ -113,7 +113,7 @@ class User
 end
 
 DataMapper.finalize
-#DataMapper.auto_migrate!
+DataMapper.auto_migrate!
 
 module ValidMessages
   def return_valid_messages(validation_content)
