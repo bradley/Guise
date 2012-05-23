@@ -102,7 +102,7 @@ module ValidMessages
   	user = validation_content.user
   	input_data = validation_content.input_data
 	  return_messages = Hash.new
-	  success_messages = user.success_messages
+	  success_messages = user.is_valid_messages
 
     input_data.each_pair do |key,val|
 	    key = key.to_sym
