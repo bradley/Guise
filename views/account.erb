@@ -26,11 +26,11 @@
     </div>
     <!-- /user-info -->
 
-      <br>
-      <h3>
-        Change your password.
-      </h3>
-      <div class="user-info">
+    <br>
+    <h3>
+      Change your password.
+    </h3>
+    <div class="user-info">
       <input name="new_password" type="password" placeholder="New Password" id="new_password" class="user-info-field update-user-info-field"/>
       <span class="notice">
         <% if @error_messages && @error_messages[:new_password] %>
@@ -40,18 +40,18 @@
     </div>
     <!-- /user-info -->
 
-      <div class="user-info">
-      <input name="password_confirmation" type="password" placeholder="Confirm New Password" id="password_confirmation" class="user-info-field update-user-info-field"/>
-      <span class="notice">
-        <% if @error_messages && @error_messages[:password_confirmation] %>
-              <%= @error_messages[:password_confirmation] %>
-          <% end %>
-        </span>
-      </div>
-      <!-- /user-info -->
+    <div class="user-info">
+    <input name="password_confirmation" type="password" placeholder="Confirm New Password" id="password_confirmation" class="user-info-field update-user-info-field"/>
+    <span class="notice">
+      <% if @error_messages && @error_messages[:password_confirmation] %>
+            <%= @error_messages[:password_confirmation] %>
+        <% end %>
+      </span>
+    </div>
+    <!-- /user-info -->
 
-      <br>
-      <div class="user-info">
+    <br>
+    <div class="user-info">
       <input name="current_password" type="password" placeholder="Current Password" id="current_password" class="user-info-field"/>
       <span class="notice">
         <% if @error_messages && @error_messages[:current_password] %>

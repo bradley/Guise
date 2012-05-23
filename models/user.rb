@@ -17,12 +17,15 @@ class User
 	property :confirmed         , Boolean  , required: true, default: false
 	property :md5_hash          , String   , unique: true, default: lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.to_s.downcase+resource.salt.to_s)}
 
-  @success_messages = {
-    :username => ['Looks good!', 'That\'s you!'], 
-    :email => ['Available!', 'That\'s your email!'], 
-    :new_password => ['Could be better.', 'Good.', 'Very nice.'], 
-    :password_confirmation => ''
-  }
+    def is_valid_messages
+      success_messages = {
+        :username => ['Looks good!', 'That\'s you!'], 
+        :email => ['Available!', 'That\'s your email!'], 
+        :new_password => ['Could be better.', 'Good.', 'Very nice.'], 
+        :password_confirmation => ''
+      }
+      return success_messages
+    end
 
 	ALPHANUM_WITH_UNDERSCORES = /\A_?[a-z0-9]_?(?:[a-z0-9]_?)*\z/i # Regexp for alphanumeric phrases with non-consecutive underscores.
 
@@ -75,15 +78,15 @@ class User
 	  end
 	end
 
-    def self.account_exists(login)
-      if user = User.first(username: login)
-      	return user
-      elsif user = User.first(email: login)
-      	return user
-      else
-      	return nil
-      end
+  def self.account_exists(login)
+    if user = User.first(username: login)
+    	return user
+    elsif user = User.first(email: login)
+    	return user
+    else
+    	return nil
     end
+  end
 end
 
 configure :development do 
@@ -171,22 +174,22 @@ class ValidateWithUpdate
   include ValidMessages
   def process_validation(validation_content)
   	validation_content.input_data.each_pair do |key, val|
-  	  key = key.to_sym
-	  val = val.to_s
+    	key = key.to_sym
+  	  val = val.to_s
 
-	  case key
-	  when :username
-	    validation_content.user.attributes = {key => val} unless val == validation_content.user.username
-	  when :email
-	    validation_content.user.attributes = {key => val} unless val == validation_content.user.email
-	  when :new_password
-	    validation_content.user.attributes = {key => val} unless val.empty?
-	  when :password_confirmation
-	    validation_content.user.attributes = {key => val} unless val.empty? && validation_content.input_data['new_password'].empty?
-	  when :current_password
-	      validation_content.user.attributes = {key => val} if !validation_content.user.dirty_attributes.empty? || validation_content.user.new_password 
-	  end 
-	end
+  	  case key
+  	  when :username
+  	    validation_content.user.attributes = {key => val} unless val == validation_content.user.username
+  	  when :email
+  	    validation_content.user.attributes = {key => val} unless val == validation_content.user.email
+  	  when :new_password
+  	    validation_content.user.attributes = {key => val} unless val.empty?
+  	  when :password_confirmation
+  	    validation_content.user.attributes = {key => val} unless val.empty? && validation_content.input_data['new_password'].empty?
+  	  when :current_password
+  	      validation_content.user.attributes = {key => val} if !validation_content.user.dirty_attributes.empty? || validation_content.user.new_password 
+  	  end 
+  	end
   end
 end
 
@@ -196,19 +199,19 @@ class ValidateWithCreate
   def process_validation(validation_content)
   	validation_content.input_data.each_pair do |key, val|
 
-  	key = key.to_sym
-	  val = val.to_s
+    	key = key.to_sym
+  	  val = val.to_s
 
-	  case key
-	  when :username
-	    validation_content.user.attributes = {key => val}
-	  when :email
-	    validation_content.user.attributes = {key => val}
-	  when :new_password
-	    validation_content.user.attributes = {key => val}
-	  when :password_confirmation
-	    validation_content.user.attributes = {key => val}
-	  end 
-	end
+  	  case key
+  	  when :username
+  	    validation_content.user.attributes = {key => val}
+  	  when :email
+  	    validation_content.user.attributes = {key => val}
+  	  when :new_password
+  	    validation_content.user.attributes = {key => val}
+  	  when :password_confirmation
+  	    validation_content.user.attributes = {key => val}
+  	  end 
+  	end
   end
 end

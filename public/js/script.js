@@ -1,4 +1,4 @@
-(document).ready(function(){
+$(document).ready(function(){
 
   // =========== Input Field Listener with AJAX Callback ==============
     function FieldListener(entity){

@@ -1,15 +1,15 @@
 # encoding: utf-8
 class App < Sinatra::Application
   get '/list' do
-  @users = User.all
-  erb :list
+    @users = User.all
+    erb :list
   end
 
   ['/search', '/search/'].each do |path|
   get path do
     if @user 
-    @title = 'Find People'
-    erb :search
+      @title = 'Find People'
+      erb :search
     else
       redirect '/login'
     end
