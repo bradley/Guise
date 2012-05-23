@@ -1,14 +1,5 @@
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/database.db") 
 
-# HACK - This has to be above the model definition to work
-# If this isn't in a module then the User class can't use the helper method
-module PasswordHasher
-	def hash_password(password, salt)
-		Digest::MD5.hexdigest(password.to_s+salt.to_s)
-	end
-end
-
-include PasswordHasher
 
 class User
 	include DataMapper::Resource
