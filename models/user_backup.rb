@@ -1,10 +1,9 @@
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/database.db") 
 
+
 class User
 	include DataMapper::Resource
 	include PasswordHasher
-
-  attr_accessor :current_password , :new_password , :password_confirmation , :success_messages
 
 	property :id                , Serial   , required: true, unique: true
   property :username          , String   , required: true, unique: true, length: 1..20
@@ -17,12 +16,7 @@ class User
 	property :confirmed         , Boolean  , required: true, default: false
 	property :md5_hash          , String   , unique: true, default: lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.to_s.downcase+resource.salt.to_s)}
 
-  success_messages = {
-    :username => ['Looks good!', 'That\'s you!'], 
-    :email => ['Available!', 'That\'s your email!'], 
-    :new_password => ['Could be better.', 'Good.', 'Very nice.'], 
-    :password_confirmation => ''
-  }
+	attr_accessor :current_password , :new_password , :password_confirmation , :success_messages
 
 	ALPHANUM_WITH_UNDERSCORES = /\A_?[a-z0-9]_?(?:[a-z0-9]_?)*\z/i # Regexp for alphanumeric phrases with non-consecutive underscores.
 
@@ -84,6 +78,16 @@ class User
       	return nil
       end
     end
+
+    def is_valid_messages
+      success_messages = {
+      	:username => ['Looks good!', 'That\'s you!'], 
+      	:email => ['Available!', 'That\'s your email!'], 
+      	:new_password => ['Could be better.', 'Good.', 'Very nice.'], 
+      	:password_confirmation => ''
+      }
+      return success_messages
+    end
 end
 
 configure :development do 
@@ -99,36 +103,36 @@ module ValidMessages
   	user = validation_content.user
   	input_data = validation_content.input_data
 	  return_messages = Hash.new
-	  success_messages = user.success_messages
+	  success_messages = user.is_valid_messages
 
     input_data.each_pair do |key,val|
-	    key = key.to_sym
-  	  case key
-  	  when :username
-    		if user && !user.attribute_dirty?(:username)
-    	    return_messages[:username] = success_messages[:username][1]
-       	else
-    		  return_messages[:username] = success_messages[:username][0]
-    		end
-  	  when :email
-    		if user && !user.attribute_dirty?(:email)
-    		  return_messages[:email] = success_messages[:email][1]
-    		else
-    		  return_messages[:email] = success_messages[:email][0]
-    		end
-  	  when :new_password
-    		if input_data['new_password'] =~ /.*[\W].*[A-Z].*[0-9]/i && input_data['new_password'] =~ /.{6,}/
-    		  return_messages[:new_password] = success_messages[:new_password][2]
-    		elsif input_data['new_password'] =~ /.*[A-Z].*[0-9]/i && input_data['new_password'] =~ /.{6,}/
-    		  return_messages[:new_password] = success_messages[:new_password][1]
-    		elsif input_data['new_password'] =~ /.{6,}/
-    		  return_messages[:new_password] = success_messages[:new_password][0]
-    		end
-  	  else
-  		  return_messages[key] = ''
-  	  end
+	  key = key.to_sym
+	  case key
+	  when :username
+		if user && !user.attribute_dirty?(:username)
+	      return_messages[:username] = success_messages[:username][1]
+   	    else
+		  return_messages[:username] = success_messages[:username][0]
+		end
+	  when :email
+		if user && !user.attribute_dirty?(:email)
+		  return_messages[:email] = success_messages[:email][1]
+		else
+		  return_messages[:email] = success_messages[:email][0]
+		end
+	  when :new_password
+		if input_data['new_password'] =~ /.*[\W].*[A-Z].*[0-9]/i && input_data['new_password'] =~ /.{6,}/
+		  return_messages[:new_password] = success_messages[:new_password][2]
+		elsif input_data['new_password'] =~ /.*[A-Z].*[0-9]/i && input_data['new_password'] =~ /.{6,}/
+		  return_messages[:new_password] = success_messages[:new_password][1]
+		elsif input_data['new_password'] =~ /.{6,}/
+		  return_messages[:new_password] = success_messages[:new_password][0]
+		end
+	  else
+		return_messages[key] = ''
 	  end
-	  return return_messages
+	end
+	return return_messages
   end
 end
 
