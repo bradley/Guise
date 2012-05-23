@@ -17,7 +17,7 @@ class User
 	property :confirmed         , Boolean  , required: true, default: false
 	property :md5_hash          , String   , unique: true, default: lambda{ |resource,prop| Digest::MD5.hexdigest(resource.email.to_s.downcase+resource.salt.to_s)}
 
-  self.success_messages = {
+  @success_messages = {
     :username => ['Looks good!', 'That\'s you!'], 
     :email => ['Available!', 'That\'s your email!'], 
     :new_password => ['Could be better.', 'Good.', 'Very nice.'], 
