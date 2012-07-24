@@ -5,30 +5,17 @@
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
   <head>  
     <meta charset="utf8">  
-    <title><%= @title + ' | Static Title' %></title>
+    <title><%= "#{@title} | #{@site_name}" %></title>
 
     <link href="/css/reset.css" rel="stylesheet">  
     <link href="/css/style.css" rel="stylesheet">  
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type ="text/javascript" src="/js/scripts.js"></script>
 
   </head>  
   <body>  
     <header id="masthead" role="banner">
       <div class="wrap"> 
         <hgroup>  
-          <h1><a href="/">Site Name</a></h1>  
-          <br>
-          <% if @user %>
-            <a href='/user'>profile</a> | 
-            <a href='/account'>settings</a> | 
-            <a href='/logout'>logout</a>
-          <% else %>
-            <a href='/login'>login</a> |
-            <a href='/join'>join</a>
-          <% end %>
-          <br>
+          <h1><a href="/">Speak</a></h1>  
           <hr>
         </hgroup> 
       </div>
@@ -46,9 +33,17 @@
     </section>
     <!-- /yield -->
 
+    <div class="wrap">
+      <section id="options">
+        <a href='/charles'>Charles Taylor</a> | <a href='/mao'>Mao Zedong</a>
+      </section>
+      <!-- /options -->
+    </div>
+    <!-- /.wrap -->
+
     <footer>
       <div class="wrap">
-        <small>Small text for copyleft and stuff.</small>  
+        <small>Copyleft</small>  
       </div>
       <!-- /.wrap -->
     </footer>  

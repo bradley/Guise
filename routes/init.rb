@@ -1,5 +1,2 @@
 # encoding: utf-8
-require_relative 'main'
-require_relative 'user'
-require_relative 'search_users'
-require_relative 'ajax'
+Dir.glob(File.dirname(__FILE__) + "/**/*.rb").each { |r| require r }

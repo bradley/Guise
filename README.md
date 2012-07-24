@@ -1,27 +1,57 @@
-# sinatra-with-users 
-A basic sinatra application with the basic amenities a user might expect.
+# Guise
+A simple sinatra application setup that allows for routing in the context of controllers.
 
-Now with AJAX!
 
-## Basic Functionality
 
-Users can:
+## What it does
 
-- Create an account.
+Using the 'as' method, the developer can wrap particular routes within the context of a controller class. 
 
-- Login/Logout.
 
-- Edit the account information.
 
-- Delete the account.
+## Example
 
-Basic error messages will be shown under related fields when there are validation errors. 
+If the user navigates to /dog or /cat, the correct response for the given pet will be rendered. Each route uses the 'speak!' method, but in the context of its controller class.
 
-## Extended Functionality
+			
+				class App < Sinatra::Application
+					# ========= Persona Management =========
+					as MaoZedong do |persona|
+						get '/mao' do 
+							@title = 'Mao Zedong'
+						  @spoken = persona.speak!          
+							erb :mao                                      
+						end
+					end
 
-If users have javascript enabled, error messages -- or, conversely, messages letting the user know how perfect their field inputs are -- will be displayed on the fly. This will not effect normal validation should the user submit a form with bad input data.
+					as CharlesTaylor do |persona|
+						get '/charles' do
+							@title = 'Charles Taylor'
+							@spoken = persona.speak!
+							erb :charles
+						end
+					end
+					# ========= /Persona Management =========
+				end
+
+
+
+## Fire it up
+
+If you have [shotgun](https://github.com/rtomayko/shotgun) installed, you should be able to run the following command to get your app going:
+
+    $ shotgun config.ru
+
+
+
+## Extras (Bloat!)
+
+This project contains some extra components that aren't necessary for the basic functionality of this demo but that I believe to be a nice starting place for any Sinatra Application. 
+
+
 
 ## Ideas
+
 Let me know if you have any feedback. Im a newbie and would relish any chance to improve on any topic here.
 
 ## Requirements
@@ -36,29 +66,10 @@ Gems:
 
 - sinatra
 
-- rack-flash
-
-- sinatra-flash
-
-- sqlite3
-
-- dm-core
-
-- dm-validations
-
-- dm-migrations
-
-- dm-serializer
-
-- dm-timestamps
-
-- dm-sqlite-adapter
-
 - jsmin
 
 - cssmin
 
-- mail
 
 
 ## Thanks

@@ -1,6 +1,7 @@
 # encoding: utf-8
 require 'sinatra'
 require 'rack'
+require 'debugger'
 
 require_relative 'minify_resources'
 
@@ -26,6 +27,9 @@ class App < Sinatra::Application
   end
 end
 
+#Dir.glob("**/*.rb").each { |r| require_relative r }
+require_relative 'controllers/init'
 require_relative 'helpers/init'
 require_relative 'models/init'
+require_relative 'modules/init'
 require_relative 'routes/init'

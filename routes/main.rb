@@ -1,12 +1,10 @@
 # encoding: utf-8
 class App < Sinatra::Application
-  SITE_NAME = "Site Name"
-  DEFAULT_TITLE = "Default Title"
+  SITE_NAME = "Situational Change"
+  DEFAULT_TITLE = "Guise"
 
   before do
-    if logged_in?
-      @user = User.first(:id => session[:user_id])
-    end
+    @site_name = SITE_NAME
     @title = DEFAULT_TITLE
   end
 
