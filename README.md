@@ -26,9 +26,9 @@ If the user navigates to /mao or /charles, the correct response for the given in
 
 	  as CharlesTaylor do |persona|
 	    get '/charles' do
-		    @title = 'Charles Taylor'
-		    @spoken = persona.speak!
-		    erb :charles
+	      @title = 'Charles Taylor'
+	      @spoken = persona.speak!
+	      erb :charles
 	    end
 	  end
 	  # ========= /Persona Management =========
