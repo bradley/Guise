@@ -11,7 +11,7 @@ Using the 'as' method, the developer can wrap particular routes within the conte
 
 ## Example
 
-If the user navigates to /mao or /charles, the correct response for the given pet will be rendered. Each route uses the 'speak!' method, but in the context of its controller class.
+If the user navigates to /mao or /charles, the correct response for the given individual will be rendered. Each route uses the 'speak!' method, but in the context of its controller class.
 
 			
 	class App < Sinatra::Application
