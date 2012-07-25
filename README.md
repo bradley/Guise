@@ -14,25 +14,25 @@ Using the 'as' method, the developer can wrap particular routes within the conte
 If the user navigates to /dog or /cat, the correct response for the given pet will be rendered. Each route uses the 'speak!' method, but in the context of its controller class.
 
 			
-		class App < Sinatra::Application
-			# ========= Persona Management =========
-			as MaoZedong do |persona|
-				get '/mao' do 
-					@title = 'Mao Zedong'
-					@spoken = persona.speak!          
-					erb :mao                                      
-				end
+	class App < Sinatra::Application
+		# ========= Persona Management =========
+		as MaoZedong do |persona|
+			get '/mao' do 
+				@title = 'Mao Zedong'
+				@spoken = persona.speak!          
+				erb :mao                                      
 			end
-
-			as CharlesTaylor do |persona|
-				get '/charles' do
-					@title = 'Charles Taylor'
-					@spoken = persona.speak!
-					erb :charles
-				end
-			end
-			# ========= /Persona Management =========
 		end
+
+		as CharlesTaylor do |persona|
+			get '/charles' do
+				@title = 'Charles Taylor'
+				@spoken = persona.speak!
+				erb :charles
+			end
+		end
+		# ========= /Persona Management =========
+	end
 
 
 
@@ -40,7 +40,7 @@ If the user navigates to /dog or /cat, the correct response for the given pet wi
 
 If you have [shotgun](https://github.com/rtomayko/shotgun) installed, you should be able to run the following command to get your app going:
 
-    $ shotgun config.ru
+  $ shotgun config.ru
 
 
 
