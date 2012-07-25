@@ -15,23 +15,23 @@ If the user navigates to /mao or /charles, the correct response for the given in
 
 			
 	class App < Sinatra::Application
-		# ========= Persona Management =========
-		as MaoZedong do |persona|
-			get '/mao' do 
-				@title = 'Mao Zedong'
-				@spoken = persona.speak!          
-				erb :mao                                      
-			end
-		end
+	  # ========= Persona Management =========
+	  as MaoZedong do |persona|
+	    get '/mao' do 
+	      @title = 'Mao Zedong'
+	      @spoken = persona.speak!          
+	      erb :mao                                      
+	    end
+	  end
 
-		as CharlesTaylor do |persona|
-			get '/charles' do
-				@title = 'Charles Taylor'
-				@spoken = persona.speak!
-				erb :charles
-			end
-		end
-		# ========= /Persona Management =========
+	  as CharlesTaylor do |persona|
+	    get '/charles' do
+		    @title = 'Charles Taylor'
+		    @spoken = persona.speak!
+		    erb :charles
+	    end
+	  end
+	  # ========= /Persona Management =========
 	end
 
 
