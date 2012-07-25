@@ -40,7 +40,7 @@ If the user navigates to /dog or /cat, the correct response for the given pet wi
 
 If you have [shotgun](https://github.com/rtomayko/shotgun) installed, you should be able to run the following command to get your app going:
 
-  $ shotgun config.ru
+  	$ shotgun config.ru
 
 
 
