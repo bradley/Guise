@@ -18,17 +18,13 @@ If the user navigates to /mao or /charles, the correct response for the given in
 	  # ========= Persona Management =========
 	  as MaoZedong do |persona|
 	    get '/mao' do 
-	      @title = 'Mao Zedong'
-	      @spoken = persona.speak!          
-	      erb :mao                                      
+	      persona.speak!                                             
 	    end
 	  end
 
 	  as CharlesTaylor do |persona|
 	    get '/charles' do
-	      @title = 'Charles Taylor'
-	      @spoken = persona.speak!
-	      erb :charles
+	      persona.speak!
 	    end
 	  end
 	  # ========= /Persona Management =========
@@ -56,8 +52,9 @@ Let me know if you have any feedback. Im a newbie and would relish any chance to
 
 ## Requirements
 
-Ruby 1.9.2
+Ruby 1.9.3
 
+Note: The ruby version is set in the .rvmrc file.
 Note: The dependencies for this app are handled with [Bundler](http://gembundler.com/).
 
 Gems:
