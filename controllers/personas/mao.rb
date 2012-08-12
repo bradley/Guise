@@ -1,6 +1,9 @@
 # encoding: utf-8
-class MaoZedong
+class MaoZedong < Controllers
 	def speak!
-		"There is great chaos under heaven – the situation is excellent."
+		quote = "There is great chaos under heaven – the situation is excellent."
+		conjure 'mao', 
+			spoken: quote, 
+			title: 'Mao Zedong'
 	end
 end

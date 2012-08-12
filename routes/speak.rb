@@ -3,17 +3,12 @@ class App < Sinatra::Application
 	# ========= Persona Management =========
 	as MaoZedong do |persona|
 		get '/mao' do 
-			@title = 'Mao Zedong'
-		  @spoken = persona.speak!          
-			erb :mao                                      
+		  persona.speak!                                              
 		end
 	end
-
 	as CharlesTaylor do |persona|
-		get '/charles' do
-			@title = 'Charles Taylor'
-			@spoken = persona.speak!
-			erb :charles
+		get '/charles' do 
+			persona.speak!
 		end
 	end
 	# ========= /Persona Management =========

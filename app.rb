@@ -20,6 +20,10 @@ class App < Sinatra::Application
   	set :js_files,  MinifyResources::JS_FILES
   end
 
+  configure do
+    set :original_caller, nil
+  end
+
   helpers do
   	#This includes a set of methods provided by Rack. We now have access to a h() method to escape HTML.
   	include Rack::Utils
@@ -28,8 +32,8 @@ class App < Sinatra::Application
 end
 
 #Dir.glob("**/*.rb").each { |r| require_relative r }
-require_relative 'controllers/init'
 require_relative 'helpers/init'
+require_relative 'controllers/init'
 require_relative 'models/init'
 require_relative 'modules/init'
 require_relative 'routes/init'

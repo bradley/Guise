@@ -1,11 +1,13 @@
 # encoding: utf-8
 class App < Sinatra::Application
+  attr_accessor :title
   SITE_NAME = "Situational Change"
   DEFAULT_TITLE = "Guise"
 
   before do
     @site_name = SITE_NAME
     @title = DEFAULT_TITLE
+    settings.original_caller = self # Allows access to individual request scope.
   end
 
   not_found do
