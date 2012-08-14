@@ -3,7 +3,7 @@ class App < Sinatra::Application
 	# ========= Persona Management =========
 	as MaoZedong do |persona|
 		get '/mao' do 
-		  persona.speak!                                              
+		  persona.speak!          
 		end
 	end
 	as CharlesTaylor do |persona|
