@@ -1,7 +1,6 @@
 # encoding: utf-8
 require 'sinatra'
 require 'rack'
-require 'debugger'
 
 require_relative 'minify_resources'
 
