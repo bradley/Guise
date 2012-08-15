@@ -32,14 +32,6 @@ If the user navigates to /mao or /charles, the correct response for the given in
 
 
 
-## Fire it up
-
-If you have [shotgun](https://github.com/rtomayko/shotgun) installed, you should be able to run the following command to get your app going:
-
-  	$ shotgun config.ru
-
-
-
 ## Extras (Bloat!)
 
 This project contains some extra components that aren't necessary for the basic functionality of this demo but that I believe to be a nice starting place for any Sinatra Application. 
