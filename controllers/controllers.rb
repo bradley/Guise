@@ -1,4 +1,3 @@
-# THIS FILE MAY BE USELESS. CHECK
 require 'sinatra/base'
 class Controllers
 	include Conjure
